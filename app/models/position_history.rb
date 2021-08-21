@@ -1,0 +1,2 @@
+class PositionHistory < ApplicationRecord
+end
