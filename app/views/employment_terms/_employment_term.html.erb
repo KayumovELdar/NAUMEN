@@ -1,0 +1,7 @@
+<tr>
+  <td><%= User.find(employment_term.user_id).full_name%></td>
+  <td><%= Position.find(employment_term.position_id).name%></td>
+  <td><%= employment_term.created_at%></td>
+  <td><%= employment_term.end_date%>
+  <%= render 'form_set_end', employment_term: employment_term%></td>
+</tr>

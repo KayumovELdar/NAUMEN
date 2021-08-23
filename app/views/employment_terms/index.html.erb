@@ -1,0 +1,13 @@
+<h1>Условия труда</h1>
+<table>
+  <tr>
+    <th>ФИО</th>
+    <th>Должность</th>
+    <th>Время назначения</th>
+    <th>Время окончания</th>
+  </tr>
+  <%= render @employment_terms%>
+</table>
+<%= link_to 'new', new_employment_term_path %>
+<%= link_to 'users', users_path %>
+<%= link_to 'positions', positions_path %>

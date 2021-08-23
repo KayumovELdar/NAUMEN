@@ -1,0 +1,7 @@
+<%= form_with model: @position, local: true do |f| %>
+  <p>
+    <%= f.label 'название_должности' %>
+    <%= f.text_field :name %>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>

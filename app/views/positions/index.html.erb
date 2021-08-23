@@ -1,0 +1,12 @@
+<h1> Должности</h1>
+<table>
+  <tr>
+    <th>№</th>
+    <th>Должность</th>
+    <th>Действие</th>
+  </tr>
+  <%= render @positions%>
+</table>
+<%= link_to 'new', new_position_path %><br>
+<%= link_to 'users', users_path %><br>
+<%= link_to 'employment_terms', employment_terms_path %>

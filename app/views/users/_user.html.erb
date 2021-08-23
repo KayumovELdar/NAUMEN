@@ -1,0 +1,8 @@
+<tr>
+  <td><%= user.l_name%></td>
+  <td><%= user.f_name%></td>
+  <td><%= user.s_name%></td>
+  <td>  <%= link_to 'подробнее', user_path(user)%>
+    <%= link_to 'изменить', edit_user_path(user)%>
+    <%= link_to 'удалить', user_path(user), method: :delete, data: {confirm: 'Вы уверены?'}%></td>
+</tr>

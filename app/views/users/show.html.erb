@@ -1,0 +1,35 @@
+<table>
+
+  <tr>
+    <th>Должность</th>
+    <th>Начало работы</th>
+    <th>Окончание работы</th>
+  </tr>
+  <%@position_history.each do |f|%>
+    <tr>
+      <td><%=Position.find(f.position_id).name%></td>
+      <td><%=f.created_at%></td>
+      <td><%=f.end_date%></td>
+    </tr>
+  <%end%>
+</table>
+
+<%= render 'shooow', user: @user%>
+<p><%if @position_history_date_filter%>
+<table>
+
+  <tr>
+    <th>Должность</th>
+    <th>Начало работы</th>
+    <th>Окончание работы</th>
+  </tr>
+  <%@position_history_date_filter.each do |f|%>
+    <tr>
+      <td><%=Position.find(f.position_id).name%></td>
+      <td><%=f.created_at%></td>
+      <td><%=f.end_date%></td>
+    </tr>
+  <%end%>
+</table>
+<%end%>
+</p>

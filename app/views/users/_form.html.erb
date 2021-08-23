@@ -1,0 +1,15 @@
+<%= form_with model: [@user], local: true do |f| %>
+  <p>
+    <%= f.label 'Фамилия' %>
+    <%= f.text_field :l_name %>
+  </p>
+  <p>
+    <%= f.label 'Имя' %>
+    <%= f.text_field :f_name %>
+  </p>
+  <p>
+    <%= f.label 'Отчество' %>
+    <%= f.text_field :s_name %>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>

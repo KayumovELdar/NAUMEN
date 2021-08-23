@@ -1,0 +1,5 @@
+<tr>
+  <td><%= position.id%></td>
+  <td><%= position.name%></td>
+  <td><%= link_to 'изменить', edit_position_path(position)%>|<%= link_to 'удалить', position_path(position), method: :delete, data: {confirm: 'Вы уверены?'}%></td>
+</tr>

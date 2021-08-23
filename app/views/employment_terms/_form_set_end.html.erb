@@ -1,0 +1,7 @@
+<%= form_with model: employment_term, url:update_end_date_employment_term_path(employment_term), local: true, class: 'form-inline' do |f| %>
+  <p>
+
+    <%= f.text_field :end_date, class: 'form-end-data', :value => Time.now %>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>

@@ -1,0 +1,12 @@
+<%= form_with model: @employment_term, local: true do |f| %>
+  <%= render 'shared/errors', resource: @employment_term %>
+  <p>
+    <%= f.label 'сотрудник' %>
+    <%= f.select :user_id, User.all.collect{ |u| [u.l_name+" "+u.f_name+" "+u.s_name, u.id]} %>
+  </p>
+  <p>
+    <%= f.label 'должность' %>
+    <%= f.select :position_id, Position.all.collect{ |p| [p.name, p.id]} %>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>
