@@ -1,3 +1,10 @@
+<h1>Фильтрация должностей по дате заступления на должность</h1>
+<form action="" method "GET">
+  <input type="date" name="start_d" value=Time.now>
+  <input type="date" name="end_d" value=Time.now>
+  <input type="submit" name="" value="фильтр">
+  </form>
+
 <table>
 
   <tr>
@@ -5,7 +12,7 @@
     <th>Начало работы</th>
     <th>Окончание работы</th>
   </tr>
-  <%@position_history.each do |f|%>
+  <%@position_history_filter.each do |f|%>
     <tr>
       <td><%=Position.find(f.position_id).name%></td>
       <td><%=f.created_at%></td>
@@ -13,23 +20,4 @@
     </tr>
   <%end%>
 </table>
-
-<%= render 'shooow', user: @user%>
-<p><%if @position_history_date_filter%>
-<table>
-
-  <tr>
-    <th>Должность</th>
-    <th>Начало работы</th>
-    <th>Окончание работы</th>
-  </tr>
-  <%@position_history_date_filter.each do |f|%>
-    <tr>
-      <td><%=Position.find(f.position_id).name%></td>
-      <td><%=f.created_at%></td>
-      <td><%=f.end_date%></td>
-    </tr>
-  <%end%>
-</table>
-<%end%>
-</p>
+<%= link_to 'users', users_path %>

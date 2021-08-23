@@ -13,9 +13,8 @@
 ActiveRecord::Schema.define(version: 2021_08_21_005024) do
 
   create_table "employment_terms", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "position_id"
-    t.datetime "begin_date"
+    t.integer "user_id", null: false
+    t.integer "position_id", null: false
     t.datetime "end_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -24,21 +23,25 @@ ActiveRecord::Schema.define(version: 2021_08_21_005024) do
   end
 
   create_table "position_histories", force: :cascade do |t|
-    t.string "name"
+    t.integer "position_id", null: false
+    t.string "name", null: false
+    t.datetime "begin_date", null: false
+    t.datetime "end_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["position_id"], name: "index_position_histories_on_position_id"
   end
 
   create_table "positions", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "l_name"
-    t.string "f_name"
-    t.string "s_name"
+    t.string "l_name", null: false
+    t.string "f_name", null: false
+    t.string "s_name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -2,6 +2,7 @@
 
 class UsersController < ApplicationController
   attr_reader :boo
+
   before_action :set_users, only: %i[index]
   before_action :set_user, only: %i[edit update destroy show]
 
@@ -36,17 +37,17 @@ class UsersController < ApplicationController
     redirect_to action: 'index'
   end
 
-  def shooow
-      @user = User.find(2)
-      @position_history = EmploymentTerm.where(user_id: @user)
-      @boo=params[:attribute]
-      @position_history_date_filter = @position_history.where(position_id: @boo)
-      redirect_to 'http://[::1]:3000/users/2'
-  end
-
-
   def show
     @position_history = EmploymentTerm.where(user_id: @user)
+    session[:start_d] = params[:start_d]
+    session[:end_d] = params[:end_d]
+    if session[:start_d] != '' || session[:end_d] != ''
+      start_d = session[:start_d]
+      end_d = session[:end_d]
+      @position_history_filter = @position_history.where(created_at: start_d..end_d)
+    else
+      @position_history_filter = @position_history.all
+    end
   end
 
   private

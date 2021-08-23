@@ -12,18 +12,23 @@ class PositionsController < ApplicationController
 
   def create
     @position = Position.new(position_params)
-
     if @position.save
+      @position_history = PositionHistory.create(name: @position.name, position_id: @position.id, begin_date: @position.created_at)
       redirect_to action: 'index'
     else
       render :new
     end
+
   end
 
   def edit; end
 
   def update
+    @last_position = PositionHistory.where(position_id: @position.id, end_date: nil)
+    byebug
     if @position.update(position_params)
+      @last_position.first.update(end_date: Time.now)
+      @position_history = PositionHistory.create(name: @position.name, position_id: @position.id, begin_date: Time.now)
       redirect_to action: 'index'
     else
       render :edit
