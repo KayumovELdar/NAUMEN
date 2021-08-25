@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
 class EmploymentTermsController < ApplicationController
+
+  before_action :set_employment_terms, only: %i[index]
+  before_action :set_employment_term, only: %i[edit update update_end_date]
   def index
-    @employment_terms = EmploymentTerm.all
   end
 
   def new
@@ -20,11 +22,9 @@ class EmploymentTermsController < ApplicationController
   end
 
   def edit
-    @employment_term = EmploymentTerm.find(params[:id])
   end
 
   def update
-    @employment_term = EmploymentTerm.find(params[:id])
     if @employment_term.update(employment_term_params)
       redirect_to action: 'index'
     else
@@ -33,8 +33,21 @@ class EmploymentTermsController < ApplicationController
   end
 
   def update_end_date
+    if @employment_term.update(employment_term_params)
+      redirect_to action: 'index'
+    else
+      render plain:"Параметр не был обнавлен!!!"
+    end
+  end
+
+  private
+
+  def set_employment_terms
+    @employment_terms = EmploymentTerm.all
+  end
+
+  def set_employment_term
     @employment_term = EmploymentTerm.find(params[:id])
-    redirect_to action: 'index' if @employment_term.update(employment_term_params)
   end
 
   def employment_term_params
