@@ -2,9 +2,12 @@
 
 class PositionsController < ApplicationController
   before_action :set_positions, only: %i[index]
+  before_action :set_position_histories, only: %i[index_position_history]
   before_action :set_position, only: %i[edit update destroy]
 
   def index; end
+
+  def index_position_history; end
 
   def new
     @position = Position.new
@@ -25,7 +28,6 @@ class PositionsController < ApplicationController
 
   def update
     @last_position = PositionHistory.where(position_id: @position.id, end_date: nil)
-    byebug
     if @position.update(position_params)
       @last_position.first.update(end_date: Time.now)
       @position_history = PositionHistory.create(name: @position.name, position_id: @position.id, begin_date: Time.now)
@@ -44,6 +46,10 @@ class PositionsController < ApplicationController
 
   def set_positions
     @positions = Position.all
+  end
+
+  def set_position_histories
+    @position_histories = PositionHistory.all
   end
 
   def set_position

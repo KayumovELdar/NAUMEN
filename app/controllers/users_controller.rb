@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
-  attr_reader :boo
-
   before_action :set_users, only: %i[index]
   before_action :set_user, only: %i[edit update destroy show]
 
